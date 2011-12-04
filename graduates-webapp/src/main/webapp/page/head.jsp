@@ -9,7 +9,7 @@
             <li><a href="#">Contact</a></li>
             <li><a href="login.action">Login</a></li>
         </ul>
-        <a href="index.html" id="logo">Zjzhai-X</a>
+        <a href="index.action" id="logo">log feel</a>
     </div>
 </div>
 </body>

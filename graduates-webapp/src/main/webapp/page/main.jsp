@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script  src="script/jq.js"  type="text/javascript"></script>
 <link href="style/style.css" rel="stylesheet" type="text/css" />
-<title>zjzhai-X log feel</title>
+<title>log feel</title>
 </head>
 <body>
 <%@ include file="head.jsp" %> 
