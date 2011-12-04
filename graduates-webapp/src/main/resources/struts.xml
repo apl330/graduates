@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC 
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<!-- 零配置插件 -->
+	<constant name="struts.convention.result.path" value="/page" />
+	
+	<constant name="struts.mapper.composite" value="rest,struts" />
+	<constant name="struts.custom.i18n.resources" value="ApplicationResources"/>
+	<constant name="struts.ognl.allowStaticMethodAccess" value="true"/>
+	<constant name="struts.i18n.encoding" value="UTF-8"/>
+	
+	<!-- 使用json的actionn必须在类名上加：@ParentPackage(value = "web") -->
+	<package name="web" extends="json-default" namespace="/"/>
+	
+</struts>

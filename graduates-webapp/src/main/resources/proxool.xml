@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<proxool>
+	<alias>proxool</alias>
+	<driver-url>${jdbc.url}</driver-url>
+	<driver-class>${jdbc.driverClassName}</driver-class>
+	<driver-properties>
+		<property name="user" value="${jdbc.username}" />
+		<property name="password" value="${jdbc.password}" />
+	</driver-properties>
+	<house-keeping-sleep-time>90000</house-keeping-sleep-time>
+	<simultaneous-build-throttle>10</simultaneous-build-throttle>
+	<prototype-count>3</prototype-count>
+	<minimum-connection-count>10</minimum-connection-count>
+	<maximum-connection-count>200</maximum-connection-count>
+	<test-before-use>true</test-before-use>
+	<test-after-use>true</test-after-use>
+	<house-keeping-test-sql>SELECT CURRENT_USER</house-keeping-test-sql>
+</proxool>

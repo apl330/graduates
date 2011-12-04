@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE dataset SYSTEM "dataset.dtd">
+<dataset>
+  <grad_users id="1" version="1" name="root" passwd="123456" />
+  <grad_feels id="1" version="1" text="kkk" date="2011-12-12" />
+</dataset>
