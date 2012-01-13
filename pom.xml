@@ -293,7 +293,7 @@
 	<build>
 		<pluginManagement>
 			<plugins>
-				<!-- dbunit start -->
+			
 				<plugin>
 					<groupId>com.dayatang.mojo.hibernate3</groupId>
 					<artifactId>hibernate3-maven-plugin</artifactId>
@@ -358,7 +358,7 @@
 						<type>${dbunit.operation.type}</type>
 						<ordered>true</ordered>
 						<format>flat</format>
-						<encoding>UTF-8</encoding>
+						<encoding>${charset}</encoding>
 						<doctype>dataset.dtd</doctype>
 					</configuration>
 					<executions>
