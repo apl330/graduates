@@ -3,11 +3,9 @@ package org.graduates.webapp.actions;
 import javax.inject.Inject;
 
 import org.projects.graduates.app.GradApplication;
-import org.projects.graduates.domain.User;
 
 import com.dayatang.domain.EntityRepository;
 import com.dayatang.domain.InstanceFactory;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class BaseAction extends ActionSupport {
@@ -20,20 +18,10 @@ public class BaseAction extends ActionSupport {
 	@Inject
 	private EntityRepository repository;
 
-	private final String sessionKeyOfUser = "currentUser";
-	
 	/**
 	 * 将user写入session
 	 * @param user
 	 */
-	public void pushUserInSession(User user){
-		ActionContext.getContext().getSession().put(sessionKeyOfUser, user);
-	}
-	
-	public User pullUserFromSession(){
-		return (User)ActionContext.getContext().getSession().get(sessionKeyOfUser);
-	}
-	
 	public GradApplication getGradApplication() {
 		if (null == gradApplication) {
 			gradApplication = InstanceFactory.getInstance(GradApplication.class);
