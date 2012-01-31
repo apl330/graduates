@@ -11,8 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="_schools")
 public class School {
-
-	// 学校所在区域，如北京市东城区
+	//����
 	private Area area;
 
 	// 学校名称
