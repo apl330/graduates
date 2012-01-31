@@ -9,6 +9,7 @@
 	<modules>
 		<module>graduates-core</module>
 		<module>graduates-webapp</module>
+		<module>graduates-secrity</module>
 	</modules>
 
 	<properties>

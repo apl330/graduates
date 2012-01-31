@@ -1,10 +1,10 @@
 package org.projects.graduates.domain;
 
 /**
- * °à¼¶
+ * ¿Î³Ì
  * @author Administrator
  *
  */
-public class Clasz {
-	private String name;
+public class Curriculum {
+
 }
