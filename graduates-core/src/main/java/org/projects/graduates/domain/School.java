@@ -11,7 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name="_schools")
 public class School {
-	//中文
+	//中文dddd言论
 	private Area area;
 
 	// 瀛︽牎鍚嶇О
