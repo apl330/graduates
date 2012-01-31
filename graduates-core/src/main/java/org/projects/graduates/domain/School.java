@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Table;
 
 /**
- * 瀛︽牎
+ * 学校-
  * @author zjzhai
  *
  */
@@ -17,7 +17,7 @@ public class School {
 	// 瀛︽牎鍚嶇О
 	private String name;
 
-	// 瀛︽牎浠ｇ爜
+	// 学校编号
 	private String code;
 	
 }
