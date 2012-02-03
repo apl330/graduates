@@ -1,20 +1,4 @@
-<!ELEMENT dataset (
-    grad_users*,
-    grad_feels*)>
+<!ELEMENT dataset ()>
 
-<!ELEMENT grad_users EMPTY>
-<!ATTLIST grad_users
-    id CDATA #REQUIRED
-    version CDATA #REQUIRED
-    name CDATA #IMPLIED
-    passwd CDATA #IMPLIED
->
-<!ELEMENT grad_feels EMPTY>
-<!ATTLIST grad_feels
-    id CDATA #REQUIRED
-    version CDATA #REQUIRED
-    text CDATA #IMPLIED
-    date CDATA #IMPLIED
->
 
 
