@@ -1,5 +1,7 @@
 package org.projects.graduates.domain;
 
+import java.util.Date;
+
 /**
  * °à¼¶
  * @author Administrator
@@ -7,4 +9,5 @@ package org.projects.graduates.domain;
  */
 public class Clasz {
 	private String name;
+	private Date createTime;
 }
