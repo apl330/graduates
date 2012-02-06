@@ -1,4 +1,12 @@
-<!ELEMENT dataset ()>
+<!ELEMENT dataset (course*)>
+<!ELEMENT course EMPTY>
+<!ATTLIST course
+    id CDATA #REQUIRED
+    version CDATA #REQUIRED
+    name CDATA #IMPLIED
+    enable CDATA #IMPLIED
+    teacher_id CDATA #IMPLIED
+>
 
 
 

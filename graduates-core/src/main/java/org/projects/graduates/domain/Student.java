@@ -1,7 +1,11 @@
 package org.projects.graduates.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
 
 @Entity
 @DiscriminatorValue(value = "student")
@@ -11,6 +15,17 @@ public class Student extends Person {
 
 	private String studentID;
 
+	@ManyToMany
+	private Set<Course> courses;
+
+	//Ñ¡¿Î
+	public void selectCourse(Course course){
+		if(null == courses){
+			courses = new HashSet<Course>();
+		}
+		courses.add(course);
+		this.save();
+	}
 	
 	@Override
 	public boolean equals(Object arg0) {
@@ -36,6 +51,14 @@ public class Student extends Person {
 
 	public void setStudentID(String studentID) {
 		this.studentID = studentID;
+	}
+
+	public Set<Course> getCourses() {
+		return courses;
+	}
+
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
 	}
 
 }

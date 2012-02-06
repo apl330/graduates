@@ -2,8 +2,10 @@ package org.projects.graduates.domain;
 
 import java.util.Set;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -26,12 +28,16 @@ public class Course extends AbstractEntity {
 
 	private boolean enable;
 
+	@Embedded
+	private CourseProfile profile = new CourseProfile();
+
 	@ManyToOne
 	@JoinColumn(name = "teacher_id")
 	private Teacher teacher;
 
-	@ManyToMany(mappedBy = "courses")
-	private Set<Clasz> classes;
+	@ManyToMany
+	@JoinTable(joinColumns = @JoinColumn(name = "course_id"), inverseJoinColumns = @JoinColumn(name = "student_id"))
+	private Set<Student> students;
 
 	@Override
 	public boolean equals(Object arg0) {
@@ -75,12 +81,20 @@ public class Course extends AbstractEntity {
 		this.teacher = teacher;
 	}
 
-	public Set<Clasz> getClasses() {
-		return classes;
+	public CourseProfile getProfile() {
+		return profile;
 	}
 
-	public void setClasses(Set<Clasz> classes) {
-		this.classes = classes;
+	public void setProfile(CourseProfile profile) {
+		this.profile = profile;
+	}
+
+	public Set<Student> getStudents() {
+		return students;
+	}
+
+	public void setStudents(Set<Student> students) {
+		this.students = students;
 	}
 
 }

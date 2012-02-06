@@ -22,6 +22,9 @@
 		<!-- Database settings -->
 		<db.type>mysql</db.type>
 	 	<db.port>3306</db.port>
+	 	<db.host>localhost</db.host>
+		<db.name>graduates</db.name>
+	 	<dbunit.operation.type>CLEAN_INSERT</dbunit.operation.type>
 	 	<dbunit.dataTypeFactoryName>org.dbunit.ext.mysql.MySqlDataTypeFactory</dbunit.dataTypeFactoryName>
 	 	<hibernate.dialect>org.hibernate.dialect.MySQL5InnoDBDialect</hibernate.dialect>
 	 	<jdbc.groupId>mysql</jdbc.groupId>
@@ -30,7 +33,7 @@
 	 	<jdbc.driverClassName>com.mysql.jdbc.Driver</jdbc.driverClassName>
 	 	<jdbc.url><![CDATA[jdbc:mysql://${db.host}:${db.port}/${db.name}?createDatabaseIfNotExist=true&amp;useUnicode=true&amp;characterEncoding=utf-8]]></jdbc.url>
 	 	<jdbc.username>root</jdbc.username>
-	 	<jdbc.password>123456</jdbc.password>
+	 	<jdbc.password/>
 	 	
 		<hibernate.dialect>org.hibernate.dialect.H2Dialect</hibernate.dialect>
 		<hibernate.connection.provider_class>org.hibernate.connection.ProxoolConnectionProvider</hibernate.connection.provider_class>
@@ -343,7 +346,7 @@
 						</dependency>
 					</dependencies>
 				</plugin>
-				<!-- 
+				
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>dbunit-maven-plugin</artifactId>
@@ -388,7 +391,7 @@
 							<version>${jdbc.version}</version>
 						</dependency>
 					</dependencies>
-				</plugin> -->
+				</plugin> 
 				<!-- dbunit end -->
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>

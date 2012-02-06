@@ -1,5 +1,6 @@
 package org.projects.graduates.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.DiscriminatorValue;
@@ -13,16 +14,16 @@ public class Teacher extends Person {
 	private static final long serialVersionUID = -8319674534046524181L;
 
 	@OneToMany(mappedBy = "teacher")
-	private Set<Course> course;
+	private Set<Course> courses;
 
-	// ¿ª°à
-	public void setUp(ElectiveClass electiveClass) {
+	// ¿ª¿Î
+	public void setUp(Course course) {
+		if (null == courses) {
+			courses = new HashSet<Course>();
+		}
+		courses.add(course);
+		this.save();
 	}
-
-	public void setUp() {
-
-	}
-
 
 	@Override
 	public boolean equals(Object arg0) {
@@ -42,12 +43,12 @@ public class Teacher extends Person {
 		return super.toString();
 	}
 
-	public Set<Course> getCourse() {
-		return course;
+	public Set<Course> getCourses() {
+		return courses;
 	}
 
-	public void setCourse(Set<Course> course) {
-		this.course = course;
+	public void setCourses(Set<Course> courses) {
+		this.courses = courses;
 	}
 
 }

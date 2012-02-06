@@ -1,6 +1,7 @@
 package org.projects.graduates.domain;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.DiscriminatorColumn;
@@ -11,6 +12,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,6 +36,8 @@ public abstract class Clasz extends AbstractEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
 
+	@ManyToOne
+	@JoinColumn(name = "creator")
 	private Person creator;
 
 	@Enumerated(EnumType.STRING)
@@ -41,8 +45,25 @@ public abstract class Clasz extends AbstractEntity {
 
 	@ManyToMany
 	@JoinTable(name = "cour_clas", joinColumns = @JoinColumn(name = "class_id"), inverseJoinColumns = @JoinColumn(name = "course_id"))
-	private Set<Course> courses;
+	private Set<Course> courseList;
 
+	public void addCourses(Course... courses) {
+		if(null == courseList) {
+			courseList = new HashSet<Course>();
+		}
+		courseList.addAll(createCourseSet(courses));
+	}
+
+	private Set<Course> createCourseSet(Course... courses){
+		Set<Course> results = new HashSet<Course>();
+		if(courses!=null && courses.length!=0){
+			for(Course course : courses){
+				results.add(course);
+			}
+		}
+		return results;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -75,12 +96,12 @@ public abstract class Clasz extends AbstractEntity {
 		this.state = state;
 	}
 
-	public Set<Course> getCourses() {
-		return courses;
+	public Set<Course> getCourseList() {
+		return courseList;
 	}
 
-	public void setCourses(Set<Course> courses) {
-		this.courses = courses;
+	public void setCourseList(Set<Course> courseList) {
+		this.courseList = courseList;
 	}
 
 }
