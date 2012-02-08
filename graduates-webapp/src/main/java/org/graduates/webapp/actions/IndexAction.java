@@ -1,16 +1,50 @@
-package org.graduates.webapp.actions;
+/*
+ * Copyright 2006 The Apache Software Foundation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package com.dayatang.projmgmt.webapp.action;
 
-import com.opensymphony.xwork2.Action;
+import java.util.Map;
+
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.convention.annotation.Results;
 
-@Results({ @Result(name = Action.SUCCESS, location = "main.action", type = "redirectAction")	})
+import com.opensymphony.xwork2.ActionContext;
+
+/**
+ * 
+ */
+@Results({ @Result(name = "success", type = "redirect", location = "personalworkstation/personal-workstation-manage.action") })
 public class IndexAction extends BaseAction {
 
-	private static final long serialVersionUID = -4892184149251385878L;
+	private static final long serialVersionUID = 8835828085195385611L;
 
-	public String execute() {
-		return Action.SUCCESS;
+	private Map<String, Object> session;
+
+	public Map<String, Object> getSession() {
+		if (session == null) {
+			session = ActionContext.getContext().getSession();
+		}
+		return session;
+	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session = session;
+	}
+
+	public String execute() throws Exception {
+		return SUCCESS;
 	}
 
 }

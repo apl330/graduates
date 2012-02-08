@@ -12,5 +12,5 @@ public enum ClassState {
 	// 正在授课
 	ONGOING,
 	// 课程结束
-	END
+	END, INVALID
 }
