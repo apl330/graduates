@@ -215,7 +215,7 @@
 			<artifactId>httpclient</artifactId>
 			<version>4.1.2</version>
 		</dependency>
-		
+
 
 		<!-- Test -->
 		<dependency>
@@ -226,39 +226,15 @@
 		</dependency>
 	</dependencies>
 
-
-
-	<build>
+<build>
+		<finalName>proj-mgmt</finalName>
 		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<encoding>UTF-8</encoding>
-					<source>1.5</source>
-					<target>1.5</target>
-				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.mortbay.jetty</groupId>
-				<artifactId>maven-jetty-plugin</artifactId>
-				<version>6.1.21</version>
-				<configuration>
-					<scanIntervalSeconds>10</scanIntervalSeconds>
-					<scanTargets>
-						<scanTarget>src/main/webapp/WEB-INF</scanTarget>
-						<scanTarget>src/main/webapp/WEB-INF/web.xml</scanTarget>
-						<scanTarget>src/main/resources/struts.xml</scanTarget>
-						<scanTarget>src/main/resources/applicationContext-hibernate.xml</scanTarget>
-						<scanTarget>src/main/resources/hibernate.cfg.xml</scanTarget>
-					</scanTargets>
-				</configuration>
-			</plugin>
 			<plugin>
 				<groupId>com.dayatang.mojo.hibernate3</groupId>
 				<artifactId>hibernate3-maven-plugin</artifactId>
 				<configuration>
 					<componentProperties>
-						<configurationfile>target/classes/hibernate.cfg.xml</configurationfile>
+						<configurationfile>target/test-classes/hibernate.cfg.xml</configurationfile>
 					</componentProperties>
 				</configuration>
 			</plugin>
@@ -266,63 +242,76 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>dbunit-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>native2ascii-maven-plugin</artifactId>
+				<version>1.0-alpha-1</version>
+				<configuration>
+					<dest>target/classes</dest>
+					<src>src/main/i18n</src>
+					<encoding>${charset}</encoding>
+					<includes>**/*.properties</includes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>native2ascii-utf8</id>
+						<goals>
+							<goal>native2ascii</goal>
+						</goals>
+						<phase>compile</phase>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>com.sun</groupId>
+						<artifactId>tools</artifactId>
+						<version>1.6.0</version>
+						<scope>system</scope>
+						<systemPath>${java.tools.jar}</systemPath>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>tomcat-maven-plugin</artifactId>
+				<version>1.1</version>
+				<configuration>
+					<path>/${cargo.context}</path>
+					<port>${cargo.port}</port>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.mortbay.jetty</groupId>
+				<artifactId>jetty-maven-plugin</artifactId>
+				<version>8.0.4.v20111024</version>
+				<configuration>
+					<webAppConfig>
+						<contextPath>/${cargo.context}</contextPath>
+					</webAppConfig>
+					<connectors>
+						<connector implementation="org.eclipse.jetty.server.nio.SelectChannelConnector">
+							<port>${cargo.port}</port>
+							<maxIdleTime>60000</maxIdleTime>
+						</connector>
+					</connectors>
+					<scanIntervalSeconds>10</scanIntervalSeconds>
+				</configuration>
+			</plugin>
 		</plugins>
-		
-		<pluginManagement>
-			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>
-											com.dayatang.mojo.hibernate3
-										</groupId>
-										<artifactId>
-											hibernate3-maven-plugin
-										</artifactId>
-										<versionRange>
-											[2.4,)
-										</versionRange>
-										<goals>
-											<goal>hbm2ddl</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore></ignore>
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-		
-		<!-- 排除资源 -->
 		<resources>
 			<resource>
 				<directory>src/main/resources</directory>
 				<includes>
-					<include>hibernate.cfg.xml</include>
 					<include>applicationContext*.xml</include>
-					<include>struts.xml</include>
-					<include>proxool.xml</include>
+					<include>conf.properties</include>
 				</includes>
 				<filtering>true</filtering>
 			</resource>
 			<resource>
 				<directory>src/main/resources</directory>
 				<excludes>
-					<exclude>hibernate.cfg.xml</exclude>
 					<exclude>applicationContext*.xml</exclude>
-					<exclude>struts.xml</exclude>
-					<exclude>proxool.xml</exclude>
+					<exclude>conf.properties</exclude>
 				</excludes>
 				<filtering>false</filtering>
 			</resource>
@@ -344,9 +333,18 @@
 		<testResources>
 			<testResource>
 				<directory>src/test/resources</directory>
+				<includes>
+					<include>hibernate.cfg.xml</include>
+				</includes>
 				<filtering>true</filtering>
 			</testResource>
+			<testResource>
+				<directory>src/test/resources</directory>
+				<excludes>
+					<exclude>hibernate.cfg.xml</exclude>
+				</excludes>
+				<filtering>false</filtering>
+			</testResource>
 		</testResources>
-		
 	</build>
 </project>

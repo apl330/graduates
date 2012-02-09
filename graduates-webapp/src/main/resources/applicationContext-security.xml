@@ -15,40 +15,6 @@
         <intercept-url pattern="/index.jsp" access="permitAll"/>
         <intercept-url pattern="/cas-logout.jsp" access="permitAll"/>
         <intercept-url pattern="/casfailed.jsp" access="permitAll"/>
-        <intercept-url pattern="/remote/*" access="permitAll"/>
-		<intercept-url pattern="/versionupdate/version-update-edit.*" access="permitAll"/>
-		<intercept-url pattern="/versionupdate/version-update-update.*" access="permitAll"/>
-		<intercept-url pattern="/projectdocument/projectdocument-add.*" access="permitAll"/>
-		<intercept-url pattern="/projectdocument/projectdocument-addAttachment.*" access="permitAll"/>
-		<intercept-url pattern="/subprojectdocument/projectdocument-add.*" access="permitAll"/>
-		<intercept-url pattern="/subprojectdocument/projectdocument-addAttachment.*" access="permitAll"/>
-		<intercept-url pattern="/license/license-addAttachment.*" access="permitAll"/>
-		<intercept-url pattern="/subproject/subprojectmaterial-add.*" access="permitAll"/>
-		<intercept-url pattern="/subproject/subprojectmaterial-addAttachment.*" access="permitAll"/>
-		<intercept-url pattern="/contract/attachment-add.*" access="permitAll"/>
-		<intercept-url pattern="/contract/subattachment-add.*" access="permitAll"/>
-		<intercept-url pattern="/standalonecontract/attachment-add.*" access="permitAll"/>
-		
-		
-		<intercept-url pattern="/assignment/assignment-manage.*" access="hasRole('ROLE_SUPERVISOR')" />
-		<intercept-url pattern="/contract/contract-view.*" access="hasRole('ROLE_SUPERVISOR') or hasRole('ROLE_PM') or hasRole('ROLE_PMO')or hasRole('ROLE_DM')"  />
-        <intercept-url pattern="/specialtystep/specialty-step-edit.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/specialtystep/add-workstep.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/specialtystep/remove-workstep.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/person/person-edit.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/person/person-remove.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/person/person-submit.*" access="hasRole('ROLE_SUPERVISOR') or hasRole('ROLE_PM') or hasRole('ROLE_PMO')or hasRole('ROLE_DM')" />
-        <intercept-url pattern="/organization/organization-edit.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/organization/organization-remove.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/organization/organization-submit.*" access="hasRole('ROLE_SUPERVISOR') or hasRole('ROLE_PM') or hasRole('ROLE_PMO')or hasRole('ROLE_DM')" />
-        <intercept-url pattern="/dictionary/dictionary-edit.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/dictionary/dictionary-remove.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/dictionary/dictionary-submit.*" access="hasRole('ROLE_SUPERVISOR') or hasRole('ROLE_PM') or hasRole('ROLE_PMO')or hasRole('ROLE_DM')" />
-        <intercept-url pattern="/project/project-specialty-edit.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/project/project-save.*" access="hasRole('ROLE_SUPERVISOR') or hasRole('ROLE_PM') or hasRole('ROLE_PMO')or hasRole('ROLE_DM')" />
-        <intercept-url pattern="/project/project-finish.*" access="hasRole('ROLE_SUPERVISOR') or hasRole('ROLE_PM') or hasRole('ROLE_PMO')or hasRole('ROLE_DM')" />
-        <intercept-url pattern="/project/project-edit.*" access="hasRole('ROLE_SUPERVISOR')" />
-        <intercept-url pattern="/project/project.*" access="hasRole('ROLE_SUPERVISOR') or hasRole('ROLE_PM')  or hasRole('ROLE_PMO')or hasRole('ROLE_DM')" />
 	    <intercept-url pattern="/**" access="hasRole('ROLE_USER') or hasRole('ROLE_SUPERVISOR') or hasRole('ROLE_PM') or hasRole('ROLE_PMO')or hasRole('ROLE_DM')" />
         <custom-filter ref="requestSingleLogoutFilter" before="LOGOUT_FILTER"/>
         <custom-filter ref="singleLogoutFilter" before="CAS_FILTER"/>
@@ -62,12 +28,12 @@
 
     <b:bean id="serviceProperties"
         class="org.springframework.security.cas.ServiceProperties"
-        p:service="http://${cas.service.host}/proj-mgmt/j_spring_cas_security_check"/>
+        p:service="http://${cas.service.host}/graduates/j_spring_cas_security_check"/>
 
     <b:bean id="requestSingleLogoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter"
         p:filterProcessesUrl="/j_spring_cas_security_logout">
         <!-- <b:constructor-arg value="http://${cas.server.host}/cas/logout"/> -->
-        <b:constructor-arg value="http://${cas.service.host}/proj-mgmt/"/>
+        <b:constructor-arg value="http://${cas.service.host}/graduates/"/>
         <b:constructor-arg>
             <b:bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler"/>
         </b:constructor-arg>
@@ -75,9 +41,6 @@
 
     <!-- This filter handles a Single Logout Request from the CAS Server -->
     <b:bean id="singleLogoutFilter" class="org.jasig.cas.client.session.SingleSignOutFilter"/>
-
-
-
 
     <!-- This filter redirects to the CAS Server to signal Single Logout should be performed -->
     <b:bean id="casFilter"
@@ -113,7 +76,7 @@
             <b:bean
                 class="org.jasig.cas.client.validation.Cas20ProxyTicketValidator"
                 p:acceptAnyProxy="true"
-                p:proxyCallbackUrl="http://${cas.service.host}/proj-mgmt/j_spring_cas_security_proxyreceptor"
+                p:proxyCallbackUrl="http://${cas.service.host}/graduates/j_spring_cas_security_proxyreceptor"
                 p:proxyGrantingTicketStorage-ref="pgtStorage">
                 <b:constructor-arg value="http://${cas.server.host}/cas" />
             </b:bean>

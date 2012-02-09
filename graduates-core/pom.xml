@@ -31,9 +31,9 @@
 			<groupId>com.dayatang.commons</groupId>
 			<artifactId>dayatang-commons-domain</artifactId>
 		</dependency>
-		
-		
-		<!-- Test -->
+
+
+			<!-- Test -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
