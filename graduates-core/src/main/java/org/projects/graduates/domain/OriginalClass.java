@@ -5,7 +5,6 @@ import javax.persistence.Entity;
 
 
 /**
- * ÉıÑ§°à
  * 
  * @author Administrator
  * 

@@ -20,7 +20,6 @@ import javax.persistence.TemporalType;
 import com.dayatang.domain.AbstractEntity;
 
 /**
- * 班级概念的抽象
  * 
  * @author Administrator
  * 
@@ -32,7 +31,7 @@ public abstract class Clasz extends AbstractEntity {
 
 	private static final long serialVersionUID = 1L;
 	private String name;
-	// 开班时间
+	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createTime;
 

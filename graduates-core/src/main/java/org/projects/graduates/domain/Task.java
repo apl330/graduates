@@ -9,11 +9,8 @@ import com.dayatang.domain.AbstractEntity;
 @Entity
 public class Task extends AbstractEntity {
 	private static final long serialVersionUID = -6068319628131518494L;
-	// 作业名
 	private String name;
-	// 必须完成时间
 	private Date mustBeCompleted;
-	// 发布时间
 	private Date releaseTime;
 
 	@Override

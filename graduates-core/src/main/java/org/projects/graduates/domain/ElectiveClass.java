@@ -4,13 +4,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
- * Ñ¡ÐÞ°à
  * @author Administrator
- *
  */
 @Entity
 @DiscriminatorValue(value = "elective_class")
-public class ElectiveClass extends Clasz{
+public class ElectiveClass extends Clasz {
 
 	private static final long serialVersionUID = -2670943249854053688L;
 

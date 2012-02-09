@@ -13,7 +13,6 @@ import javax.persistence.Table;
 import com.dayatang.domain.AbstractEntity;
 
 /**
- * ¿Î³Ì
  * 
  * @author Administrator
  * 

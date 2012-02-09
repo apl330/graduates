@@ -20,7 +20,6 @@ public abstract class Person extends AbstractEntity {
 	private String realName;
 	private Gender gender;
 	private String telephone;
-	// 由生日计算出来
 	private int age;
 	private Date birthday;
 

@@ -16,7 +16,6 @@ public class Teacher extends Person {
 	@OneToMany(mappedBy = "teacher")
 	private Set<Course> courses;
 
-	// ¿ª¿Î
 	public void setUp(Course course) {
 		if (null == courses) {
 			courses = new HashSet<Course>();

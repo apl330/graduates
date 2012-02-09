@@ -1,4 +1,5 @@
-package com.dayatang.projmgmt.webapp.action;
+package org.graduates.webapp.actions;
+
 
 public class ErrorAction extends BaseAction {
 

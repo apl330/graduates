@@ -18,7 +18,6 @@ public class Student extends Person {
 	@ManyToMany
 	private Set<Course> courses;
 
-	//Ñ¡¿Î
 	public void selectCourse(Course course){
 		if(null == courses){
 			courses = new HashSet<Course>();

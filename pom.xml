@@ -17,13 +17,13 @@
 	<modules>
 		<module>graduates-core</module>
 		<module>graduates-security</module>
-		<!-- <module>graduates-utils</module> <module>graduates-android</module> -->
 		<module>graduates-webapp</module>
 	</modules>
 	<!-- 全局变量 -->
 	<properties>
 		<!-- Application settings -->
 		<dayatang.commons.version>2.6</dayatang.commons.version>
+		<project.version>0.1</project.version>
 		<slf4j.version>1.6.4</slf4j.version>
 		<hibernate.version>3.6.9.Final</hibernate.version>
 		<spring.version>3.1.0.RELEASE</spring.version>

@@ -27,7 +27,6 @@ public class CourseProfile implements ValueObject {
 	@Enumerated(EnumType.STRING)
 	private Week week;
 
-	// µÚ¼¸½Ú
 	private int section;
 
 	public Date getFrom() {
